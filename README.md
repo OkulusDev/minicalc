@@ -1,5 +1,5 @@
 # minicalc
-Минималистичный ASCII калькулятор научных выражений
+Минималистичный ASCII калькулятор научных выражений на С++
 
 ![GitHub top language](https://img.shields.io/github/languages/top/OkulusDev/minicalc)
 ![GitHub](https://img.shields.io/github/license/OkulusDev/minicalc)
