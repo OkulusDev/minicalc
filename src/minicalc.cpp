@@ -69,7 +69,7 @@ int priority(char op) {
 	 *  int 0 - если не то, и не другое */
 	if (op == '+' || op == '-') {
 		return 1;
-	} else if (op == '*' || op == '/') {
+	} else if (op == '*' || op == '/' || op == 'P') {
 		return 2;
 	}
 
@@ -134,15 +134,21 @@ double evaluateExpression(const string&expression) {
 			while (!operators.empty() && priority(operators.top()) >= priority(expression[i])) {
 				double b = numbers.top();
 				numbers.pop();
+
 				double a = numbers.top();
 				numbers.pop();
+				
 				char op = operators.top();
 				operators.pop();
-
 				double result = applyOperation(a, b, op);
 				numbers.push(result);
 			}
 			operators.push(expression[i]);
+		} else {
+			if (expression[i] != ' ') {
+				cout << "Ошибка: Символ " << expression[i] << " не является числом, оператором или скобкой" << endl;
+				return 0;
+			}
 		}
 	}
 
@@ -198,7 +204,6 @@ int main() {
 			drawGraph(x, y);
 		} else {
 			double result = evaluateExpression(expression);
-
 			cout << expression << " = " << result << endl;
 		}
 	}
